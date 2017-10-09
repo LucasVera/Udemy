@@ -1,6 +1,6 @@
 $base-color:darkslategrey;
-$light-color: $lighten($base-color, 40%);
-$dark-color: $darken($base-color, 40%);
+$light-color: lighten($base-color, 40%);
+$dark-color: darken($base-color, 40%);
 
 *{
     background-color: $base-color;
