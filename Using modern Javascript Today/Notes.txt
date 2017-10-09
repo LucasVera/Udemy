@@ -1,0 +1,51 @@
+
+Modules:
+combine multiple assets intelligently (everything that the browser will download (js, imgs, etc))
+basically is a bundler and a loader (bundler: puts all js fils together in one)
+
+
+Node:
+When requiring packages and libraries from node, the ./ syntax is used when requiring
+local stuff, else you use the name
+var fs = requre('fs');          ---> Global package
+var calc = requre('./calc.js')  ---> Local package
+
+fs: file manager Module
+path: useful for path 
+
+when using http module, the req and res variables are actually streams: constant
+data flow.
+
+Reguar expressions: https://regex101.com
+
+
+Lodash:
+JS node Library --> Helper utilities for working with arrays and objects (simple or complex)
+
+
+NPM:
+to start a project, first type npm init. this will ask questions about the project and create a
+package.json file that describes the project and has some additional features (scripts)
+when we use npm install --save it saves it to package.json dependencies, so
+the source control dont save the node_modules. when we clone a repository, we dont have the
+node_modules folder. to create it from the dependencies, we use npm install
+
+
+BOWER:
+like npm, but speciallized in front-end. it also has a bower.json file which describes the
+dependencies and description of the project much like the package.json. bower init will create
+this file and bower install will install the dependencies in the json file
+to change where bower will install modules, we create a .bowerrc with
+{
+    "directory": "public/components"
+}
+
+
+LESS/SASS:
+
+
+
+
+
+
+
