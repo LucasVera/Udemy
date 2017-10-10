@@ -61,4 +61,8 @@ nav {
   background: #253f3f;
   border-top: 2px solid #253f3f; }
 
+.site-wrap.footer span {
+  display: table;
+  margin: 0 auto; }
+
 /*# sourceMappingURL=test.css.map */

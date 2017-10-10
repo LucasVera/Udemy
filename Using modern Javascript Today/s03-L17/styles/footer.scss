@@ -4,3 +4,8 @@
     background: darken($base-color, 5%);
     border-top: 2px solid darken($base-color, 5%);
 }
+
+.site-wrap.footer span{
+    display: table;
+    margin: 0 auto;
+}
