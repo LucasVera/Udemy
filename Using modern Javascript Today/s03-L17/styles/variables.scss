@@ -1,0 +1,11 @@
+$base-color:darkslategrey;
+$secondary-color: slategrey;
+$background-color: $base-color;
+$light-color: lighten($base-color, 60%);
+$dark-color: darken($base-color, 35%);
+$lightest-color: lighten($base-color, 80%);
+$darkest-color: darken($base-color, 50%);
+
+$page-width:700px;
+$color-accent: lightslategrey;
+$font-family: helvetica, verdana, arial;

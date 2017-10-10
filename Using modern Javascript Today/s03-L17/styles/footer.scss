@@ -1,0 +1,6 @@
+@import 'variables';
+.site-wrap.footer{
+    padding:10px;
+    background: darken($base-color, 5%);
+    border-top: 2px solid darken($base-color, 5%);
+}

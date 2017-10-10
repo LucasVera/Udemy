@@ -1,0 +1,15 @@
+@mixin border-radius($radius){
+    border-top-left-radius:$radius;
+    border-top-right-radius: $radius;
+}
+
+@mixin inner-top-highlight($base-color){
+    border-left: 2px solid lighten($base-color, 5%);
+    border-top: 2px solid lighten($base-color, 5%);
+    border-right: 2px solid lighten($base-color, 5%);
+}
+
+@mixin default-text(){
+    line-height: 1.6em;
+    margin-bottom: 10px;
+}

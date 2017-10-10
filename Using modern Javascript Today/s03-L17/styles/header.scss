@@ -1,0 +1,51 @@
+@import 'variables';
+$header-background: lighten($background-color, 5%);
+$header-border: darken($background-color, 5%);
+
+.site-wrap.header{
+    background: $header-background;
+    border-bottom: $header-border;
+}
+
+h1{
+    font-weight: normal;
+    margin:0;
+    padding: 10px 0;
+
+    strong{
+        color: lighten($secondary-color, 20%);
+    }
+}
+
+nav{
+    display:flex;
+
+    >a{
+        @include border-radius(10px);
+        display: block;
+        padding:10px;
+        color:$light-color;
+        text-align: center;
+
+        text-decoration: none;
+        flex-grow:1;
+        flex-basis: 0;
+
+        &:hover{
+            // nav > a:hover
+            background: $light-color;
+            color:$base-color;
+        }
+    }
+
+    >a.selected{
+        background: $secondary-color;
+        color:$lightest-color;
+        font-weight: bold;
+        @include inner-top-highlight($header-background);
+        &:hover{
+            // nav > a.selected:hover
+            background: darken($secondary-color, 15%);
+        }
+    }
+}

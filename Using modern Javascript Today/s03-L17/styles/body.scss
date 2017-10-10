@@ -1,0 +1,5 @@
+.site-wrap.body{
+    p{
+        @include default-text();
+    }
+}

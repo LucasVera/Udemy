@@ -41,8 +41,51 @@ to change where bower will install modules, we create a .bowerrc with
 }
 
 
-LESS/SASS:
+SASS:
+install sass through ruby gem, then use sass --watch ./ to tell sass to watch the current dir
+for changes in .scss files and compile them automatically into .css files so we can use them in html.
+To make a div occupy as much as it can, you should use the following properties
+display: flex;
+flex-direction: column;
+.body{ flex-grow: 1; }
+this will have the .body class use all available space between the header and the footer.
+sometimes is best to create a .scss file with all the variables, then @import this file
+in the other .scss files to use the variables.
 
+
+SOURCE-MAPS:
+tells the browser that the code he is running is pre-compiled code and it comes from other sources.
+Using these maps is useful for debugging or finding individual styles through the developer tools
+in chrome. when not using these maps, the browser will show the compiled .css file which is not
+what we want to see. SASS does this automatically, less doesnt.
+Its not only used in styles, but any transpiler (js to js, jade to html, etc)
+
+
+MIXINS:
+is a "function" that you declare, it takes parameters and sets some styles based on the values of
+those parameters. is useful for not repeating the same css rules over and over again. for example
+@mixin border-radius($value){
+    border-top-left-radius: $value;
+    border-top-right-radius: $value;
+}
+then, use it inside another scss rule and call it like a function
+.btn{
+    @include border-radius(10px);
+}
+and that will give the .btn class a border top-left and top-right radius of 10px;
+When importing various other files, always import first the mixins first
+a mixin can be declared with no parameters and it can still be used as a mixin
+to avoid repeating code. for example
+@mixin default-text{
+    // ...properties
+}
+
+
+ECMA Script
+group in charge of specification of modern js. the github page tells which new features are 
+waiting for a another version or which ones are on early stages.
+The site kangax.github.io/compat-table/es6 shows which features of ES6 are implemented on
+which browsers/compilers and how many features.
 
 
 
