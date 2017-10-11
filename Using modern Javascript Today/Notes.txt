@@ -86,9 +86,95 @@ group in charge of specification of modern js. the github page tells which new f
 waiting for a another version or which ones are on early stages.
 The site kangax.github.io/compat-table/es6 shows which features of ES6 are implemented on
 which browsers/compilers and how many features.
+- variables: let and const
+let: is var, but behaves good, for example you can't declare the same variable twice
+let is a scope variable, which means it only exists in current func, if, while, etc.
+it prevents suplicate declaration of variables, it prevents using a variable that has
+not been declared yet, etc. Use let instead of var for every case.
+const: exactly like let, except is a variable that cannot be redefined or reassigned.
+however, const will let you reassign properties if const is an object.
+const obj = {name: 'test'}
+obj = 20        ---> INVALID
+obj.name = 'hi' ---> VALID
+- deconstruction: extract values from objects or arrays in a compact way
+const {roles} = person; ---> this means, take person object, take property 'roles' and
+assign that property to a const named 'roles'
+const roles = person.roles; would be the equivalent
+it can also grab deeply nested object (object within another object) using another
+desconstruction inside the deconstruction:
+const person = {name:{first:'luc', last:'ver'}}
+const {name: first, last} = person;
+it also works in function parameters
+function test(param1, {roles, {name: first, last}}){
+    console.log(param1);
+    console.log(roles);
+    console.log([first, last]);
+}
+it can specify default variable value
+const {title, length, description='Desc not found'} = getTrack();
+- default parameters:
+just like C#, we can use default parameters in js
+function test(parm1, parm2='name', parm3={test: true}){...}
+- object literals:
+when constructing an object which will have the same property name as variable used
+to assign the value, just use {name1, name2} --> {name1: name1, name2: name2}
+when declaring an object that has a function as a property, no need to put the :function 
+just use
+const obj={
+    firstName:'test',
+    sayHello(){
+        console.log(`hello, ${this.firstName}`)
+    }
+}
+- classes:
+very similar syntax to C#, Java, etc. it has a special method called constructor()
+it can accept a parameter and do something. it can have properties (getter-setter syntax)
+and static methods.
+it can also use inheritance, using keyword extends, it enables to override methods,
+add new methods, etc
+- symbols:
+a way to create private fields in classes. needs to include a polyfill.js script to
+support in older browsers.
+const _firstName = Symbol(),
+    _lastName = Symbol()
+class Person{
+    get firstName(){return this._firstName}
+    get lastName(){return this._lastName}
+
+    constructor(firstName, lastName){
+        this[_firstName] = firstName;
+        this[_lastName] = lastName;
+    }
+}
 
 
-
-
-
-
+BABEL:
+Takes modern ECMA 2015 js code and transpiles it into compatible code for legacy browsers
+npm install babel --save-dev    ---> because it's used only in dev
+npm install -g babel-cli        ---> to install babel globally, or instead of -g use --save-dev
+the common usage is to create a folder named public, inside will be another folder named scripts.
+The public folder contains everything that the server will be serving, and the scripts folder
+will have the transpiled code (output from babel)
+the scripts folder that is not within public will be source scripts, meaning uncompiled js.
+then, you can set up a script to run in package.json that will take the scripts from one folder
+and transpile them into another folder. for example:
+"scripts":{
+    "scripts": "babel scripts --source-maps-inline --out-dir public/scripts"
+}
+if we pass a --watch flag, babel will automatically transpile the js files in the folder
+BUT, that is not enough, we need to tell babel which code we will be using so it can
+transpile it accordingly. there are presets so the setup is already taken care of
+to install a preset of ES2015:
+npm install babel-preset-es2015 --save-dev
+then, we tell babel to use this preset through a .babelrc file with
+{
+    "presets":[
+        "es2015"
+    ]
+}
+or better, it can be included in package.json file with the following syntax:
+"babel":{
+    "presets":[
+        "es2015"
+    ]
+}

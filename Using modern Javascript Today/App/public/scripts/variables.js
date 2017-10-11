@@ -1,0 +1,103 @@
+'use strict';
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+(function () {
+
+    for (var i = 0; i < 10; i++) {
+        window.setTimeout(function () {
+            console.log(i);
+        }, 0);
+    }
+
+    var person = {
+        name: { first: 'luc', last: 'ver' },
+        roles: ['admin'],
+        isActive: true
+    };
+
+    var printPerson = function printPerson(person) {
+        var roles = person.roles;
+        var firstName = person.name.first;
+        var lastName = person.name.last;
+
+        console.log(roles);
+        console.log(roles.length);
+        console.log([firstName, lastName]);
+    };
+
+    printPerson(person);
+
+    var printPerson2 = function printPerson2(person) {
+        var roles = person.roles,
+            _person$name = person.name,
+            first = _person$name.first,
+            last = _person$name.last;
+
+
+        console.log(roles);
+        console.log(roles.length);
+        console.log([first, last]);
+    };
+    printPerson2(person);
+
+    var printPerson3 = function printPerson3(param1, _ref) {
+        var roles = _ref.roles,
+            _ref$name = _ref.name,
+            first = _ref$name.first,
+            last = _ref$name.last;
+
+        console.log(param1);
+        console.log(roles);
+        console.log(roles.length);
+        console.log([first, last]);
+    };
+    printPerson3('a', person);
+
+    var getTrack = function getTrack() {
+        return { title: 'track 1', length: 10 };
+    };
+
+    var _getTrack = getTrack(),
+        title = _getTrack.title,
+        length = _getTrack.length,
+        _getTrack$description = _getTrack.description,
+        description = _getTrack$description === undefined ? 'Desc not found' : _getTrack$description;
+
+    // arrays deconstruction
+
+
+    var array = [1, 2, 3, 4, 5, 6, 7];
+
+    var firstNum = array[0],
+        secondNum = array[1],
+        thirdNum = array[2];
+    var x1 = array[0],
+        y1 = array[1],
+        z1 = array[7]; // z1 will be the 7nth position of the array
+
+    var head1 = array[0],
+        head2 = array[1],
+        rest = array.slice(2); // rest will have the rest of the array positions, minus the 2 firsts
+
+
+    var getPoint = function getPoint() {
+        var x = 0;
+        var y = 0;
+        // do stuff with x,y
+
+        return { x: x, y: y }; // will return {x:x, y:y}
+    };
+
+    var person2 = {
+        name: 'test',
+        sayHello: function sayHello() {
+            console.log('hello, ' + this.name);
+        }
+    };
+
+    // computed property:
+    var person3 = _defineProperty({
+        name: 'person3'
+    }, 'computed-' + 'property' + Math.random(), 'computed test');
+})();
