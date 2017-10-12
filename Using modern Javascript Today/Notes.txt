@@ -86,7 +86,7 @@ group in charge of specification of modern js. the github page tells which new f
 waiting for a another version or which ones are on early stages.
 The site kangax.github.io/compat-table/es6 shows which features of ES6 are implemented on
 which browsers/compilers and how many features.
-- variables: let and const
+- variables (let and const):
 let: is var, but behaves good, for example you can't declare the same variable twice
 let is a scope variable, which means it only exists in current func, if, while, etc.
 it prevents suplicate declaration of variables, it prevents using a variable that has
@@ -96,7 +96,8 @@ however, const will let you reassign properties if const is an object.
 const obj = {name: 'test'}
 obj = 20        ---> INVALID
 obj.name = 'hi' ---> VALID
-- deconstruction: extract values from objects or arrays in a compact way
+- deconstruction:
+extract values from objects or arrays in a compact way
 const {roles} = person; ---> this means, take person object, take property 'roles' and
 assign that property to a const named 'roles'
 const roles = person.roles; would be the equivalent
@@ -146,6 +147,16 @@ class Person{
         this[_lastName] = lastName;
     }
 }
+- promises:
+Very powerfull technique to handle async operations. it needs polyfill script
+and its actually an api, not a new syntax. if the browser has implemented the promise
+class, then it will use the native class, if not, it will use the polyfill class.
+theres a way to nest promises so the done or fail callback is shared for various promises
+the way to do this is using .then and returning another promise, so it gets chained
+(view the js file)
+the other way to do this is use Promise.all(promise1, promise2, ...).then(sucess, fail)
+so the Promise.all will return a promise that only resolves after all the other promises
+in the parameters are resolved
 
 
 BABEL:

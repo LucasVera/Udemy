@@ -3,13 +3,13 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 (function () {
-
-    for (var i = 0; i < 10; i++) {
-        window.setTimeout(function () {
+    /*
+    for(var i=0 ; i<10 ; i++){
+        window.setTimeout(()=>{
             console.log(i);
-        }, 0);
+        },0);
     }
-
+    */
     var person = {
         name: { first: 'luc', last: 'ver' },
         roles: ['admin'],
@@ -20,10 +20,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var roles = person.roles;
         var firstName = person.name.first;
         var lastName = person.name.last;
-
+        /*
         console.log(roles);
         console.log(roles.length);
         console.log([firstName, lastName]);
+        */
     };
 
     printPerson(person);
@@ -33,24 +34,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             _person$name = person.name,
             first = _person$name.first,
             last = _person$name.last;
-
-
+        /*
         console.log(roles);
         console.log(roles.length);
         console.log([first, last]);
+        */
     };
     printPerson2(person);
 
     var printPerson3 = function printPerson3(param1, _ref) {
-        var roles = _ref.roles,
-            _ref$name = _ref.name,
-            first = _ref$name.first,
-            last = _ref$name.last;
-
+        /*
         console.log(param1);
         console.log(roles);
         console.log(roles.length);
         console.log([first, last]);
+        */
+
+        var roles = _ref.roles,
+            _ref$name = _ref.name,
+            first = _ref$name.first,
+            last = _ref$name.last;
     };
     printPerson3('a', person);
 
@@ -92,7 +95,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var person2 = {
         name: 'test',
         sayHello: function sayHello() {
-            console.log('hello, ' + this.name);
+            /*
+            console.log(`hello, ${this.name}`);
+            */
         }
     };
 
@@ -100,4 +105,83 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var person3 = _defineProperty({
         name: 'person3'
     }, 'computed-' + 'property' + Math.random(), 'computed test');
+
+    // promises
+
+    function loadUsers() {
+        return new Promise(function (done, fail) {
+            $.ajax('/users.json', {
+                dataType: 'json',
+                success: function success(data) {
+                    done(data);
+                },
+                error: function error(_error) {
+                    done(_error);
+                }
+            });
+        });
+    }
+
+    function loadTracks() {
+        return new Promise(function (done, fail) {
+            $.ajax('/tracks.json', {
+                dataType: 'json',
+                success: function success(data) {
+                    done(data);
+                },
+                error: function error(_error2) {
+                    done(_error2);
+                }
+            });
+        });
+    }
+    /*
+        loadUsers().then(
+            data => {
+                console.log('OK');
+                console.log(data);
+            },
+            error => {
+                console.log('Error!');
+                console.log(error);
+            });
+    */
+    function succeedAt(milliseconds) {
+        return new Promise(function (done, fail) {
+            window.setTimeout(done, milliseconds);
+        });
+    }
+    function failAt(milliseconds) {
+        return new Promise(function (done, fail) {
+            window.setTimeout(fail, milliseconds);
+        });
+    }
+    /*
+        succeedAt(2000)
+            .then(()=>loadUsers())
+            .then(data=>console.log(data));
+    */
+
+    function testPromise() {
+        return new Promise(function (done, fail) {
+            setTimeout(done, 1500);
+        });
+    }
+
+    function testPromise2() {
+        return new Promise(function (done, fail) {
+            setTimeout(done, 1000);
+        });
+    }
+    /*
+        Promise.all([loadUsers(), loadTracks()])
+            .then(data=>{
+                const [users, tracks] = data;
+                console.log(users);
+                console.log(tracks);
+            });
+    */
+    Promise.all([testPromise(), testPromise2()]).then(function (data) {
+        console.log('finished');
+    });
 })();

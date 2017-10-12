@@ -1,0 +1,7 @@
+{
+    "1":{"id":1,"name":"nom1","roles":["admin"]},
+    "2":{"id":2,"name":"nom2","roles":["admin"]},
+    "3":{"id":3,"name":"nom3","roles":["admin"]},
+    "4":{"id":4,"name":"nom4","roles":["admin"]},
+    "5":{"id":5,"name":"nom5","roles":["admin"]}
+}
