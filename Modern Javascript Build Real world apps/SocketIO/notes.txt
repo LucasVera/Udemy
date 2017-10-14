@@ -1,0 +1,25 @@
+
+Middleware:
+is code that receives the request, does something and finally decides if it should go to the rest of the pipeline to handle the request or not. (for example, authentication)
+its useful for request and response
+works in async nature
+
+Jade:
+templating language to construct html from the server. its used as a view engine for node/express
+its a language on its own and is not html, although it renders and constructs as html
+it uses variables to make it dynamic, so depending of things in the request/response, it could
+show or hide stuff
+= is used for javascript, as a space is used to show as is (meaning, a string)
+
+
+Socket.io
+Real-time communitacion platform
+- talk to server
+- server talks to every client without need for more requests
+- like signalR, but uses webSockets
+- sends/receives events
+- the variable that exists in the server is connected to the variable
+that is declared in the client (not exactly the same var, but use same events)
+
+
+

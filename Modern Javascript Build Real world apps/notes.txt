@@ -1,0 +1,42 @@
+
+Middleware:
+is code that receives the request, does something and finally decides if it should go to the rest of the pipeline to handle the request or not. (for example, authentication)
+its useful for request and response
+works in async nature
+
+Jade:
+templating language to construct html from the server. its used as a view engine for node/express
+its a language on its own and is not html, although it renders and constructs as html
+it uses variables to make it dynamic, so depending of things in the request/response, it could
+show or hide stuff
+= is used for javascript, as a space is used to show as is (meaning, a string)
+
+
+Socket.io
+Real-time communitacion platform
+- talk to server
+- server talks to every client without need for more requests
+- like signalR, but uses webSockets
+- sends/receives events
+- the variable that exists in the server is connected to the variable
+that is declared in the client (not exactly the same var, but use same events)
+
+
+Webpack:
+Es un bundler (une todo el código en un solo .js file) para usarse efectivamente.
+- Se crea un folder src, dentro de ese se crean 3 folders mas, client, server y shared. En shared estará el código que se podrá compartir en cliente y servidor a través de webpack
+- se crea un archivo test.js en el folder shared que verificará que webpack esté funcionando adecuadamente. en este archivo se crea un test y éste se puede importar desde el server.js para usar el método de test que se defina
+- Cuando se instala algo con *-loader significa que eso será usado por webpack para hacer algo. por ejemplo, eslint-loader significa que antes de que webpack haga la compilación, webpack le aplicará las reglas de eslint para asegurarse de que el js esté bien.
+- Cuando se le da --save-dev significa que instalará las cosas solo para el ambiente de dev, ya que para el producto terminado, el webpack se encargará de hacer la transpilación
+- To run the webpack config, is node_modules\.bin\webpack --config .\webpack.server
+
+
+
+
+
+
+
+
+
+
+
