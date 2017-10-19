@@ -189,3 +189,70 @@ or better, it can be included in package.json file with the following syntax:
         "es2015"
     ]
 }
+
+
+
+GULP:
+task runner: simple program that runs tasks that we define
+like in package.json in section 'scripts'. it is mainly
+used for automating the babeling, the sass preprocessing,
+concatenating and minifing the js files for prod folder.
+to use it, install globally and then install locally. create
+a file caled gulpfile.js with the tasks (see file for an example)
+gulp runs on streams, so when defining a task, a callback func
+can be specified and when called, it will end the task
+the idea is to return a stream. useful commands: 
+gulp.src
+gulp.pipe
+gulp.dest
+gulp works on plugins (modular), so to do a babel transpile
+we need to install gulp-babel, for sass we install gulp-sass
+and so on.
+for babel:
+npm install gulp-babel --save-dev 
+npm install babel-preset-es2015 --save-dev
+then, on the pipeline, we type
+.pipe(babel())
+remember the .babelrc file to set the preset
+and remember to install babel-core and babel-loader
+to specify a babel on a matching criteria (for example, 
+everything in a folder)
+gulp.src('./src/scripts/**/*.js')
+it means, grab all .js files in the specified directory
+and in the subdirectories
+- combine tasks:
+the convention is that the default task should build the project
+so, default should combine all the tasks. there's 2 ways to 
+combine them. one after the other, or simultaneously
+serial or parallel
+gulp.task('default', gulp.parallel(task1, task2, ...))
+gulp.task('default', gulp.series(task1, task2, ...))
+try to use parallel to make use of async and multi-threading
+(node philosophy). Series and parallel can be combined 
+passing a parallel as a task for a series, for example
+*NOTE series and parallel are features of gulp 4. if not available
+try to install from github using
+npm install "gulpjs/gulp.git#4.0" --save-dev
+or look for the path at github.com
+*FOR USE IN VERSION 3.9
+use gulp.task('default', ['task1', 'task2', ...]);
+
+
+STREAMS:
+Node is async by nature, but this is because it relies heavily
+on streams. There are 2 types, output and input streams.
+the http-server that we created in node in the first sections
+used the req, res variables; these are actually streams.
+a stream is a flow of data, that is not sent all at once, but
+in chunks
+
+
+
+
+
+
+
+
+
+
+
