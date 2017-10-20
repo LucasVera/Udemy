@@ -238,6 +238,31 @@ or look for the path at github.com
 use gulp.task('default', ['task1', 'task2', ...]);
 
 
+COMMON PLUGINS FOR GULP:
+- sourcemaps: npm install gulp-sourcemaps --save-dev
+.pipe(sourcemaps.init())
+...
+.pipe(sourcemaps.write('.'))
+- autoprefixer: automatically detect and insert prefixes
+that you are using (for example, in css styles, in safari
+or other browsers sometimes you need to specify -webkit-something).
+npm install gulp-autoprefixer --save-dev
+.pipe(sass())
+.pipe(autoprefixer({
+    browsers: ["last 2 versions"]
+}))
+- gulp-load-plugins: reads package.json with everything that starts
+with a gulp- and takes it into a variable (cleaner code)
+npm install gulp-load-plugins --save-dev
+remove all dependencies and do
+var plugins = require('gulp-load-plugins')();
+then everything will be in plugins
+plugins.sass()
+plugins.babel()
+plugins.sourcemaps.init()
+...
+
+
 STREAMS:
 Node is async by nature, but this is because it relies heavily
 on streams. There are 2 types, output and input streams.
@@ -248,12 +273,17 @@ in chunks
 
 
 VINYL FS:
-Stream framework used by gulp to create all tasks it uses. the 
+Stream framework used by gulp to create and transform streams
 
 
-
-
-
+PRODUCTION:
+the idea is to take all the js files, combine them into one 
+or a handful of them and uglify them (minify)
+npm install gulp-minify-css --save-dev
+npm install gulp-uglify --save-dev
+npm install gulp-concat --save-dev
+- prodCss: no sourcemaps, yes minify (plugins.minifyCss())
+- prodScripts: no sourcemaps, yes uglify, yes concat
 
 
 

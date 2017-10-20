@@ -1,0 +1,1 @@
+{"version":3,"sources":["site.scss"],"names":[],"mappings":"AAAA;EAEQ,WAAS,EACZ","file":"site.css","sourcesContent":["body{\r\n    .test{\r\n        color:red;\r\n    }\r\n}"]}
