@@ -247,7 +247,8 @@ a stream is a flow of data, that is not sent all at once, but
 in chunks
 
 
-
+VINYL FS:
+Stream framework used by gulp to create all tasks it uses. the 
 
 
 
